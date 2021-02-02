@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flix</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +9,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= image_tag("logo") %>
+    </header>
+  <head>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </head>
+  <footer>
+    <div><%= Time.now.year %> All Rights Reserved.</div>
+  </footer>
   </body>
 </html>
