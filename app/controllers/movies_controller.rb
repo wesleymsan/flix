@@ -1,13 +1,26 @@
 # frozen_string_literal: true
 
-# Index controller
+# Movie's controller
 class MoviesController < ApplicationController
   def index
     @movies = Movie.released
   end
 
   def show
-    @movie = Movie.find params[:id]
+    @movie = Movie.find(params[:id])
+  end
+
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if @movie.update(movie_params)
+      redirect_to @movie
+    else
+      render :edit
+    end
   end
 
   def new
@@ -16,22 +29,11 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-
-    @movie.save
-
-    redirect_to @movie
-  end
-
-  def edit
-    @movie = Movie.find(params[:id])
-  end
-
-  def update
-    @movie = Movie.find params[:id]
-
-    @movie.update(movie_params)
-
-    redirect_to @movie
+    if @movie.save
+      redirect_to @movie
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -43,7 +45,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    @movie = params.require(:movie).permit(
+    params.require(:movie).permit(
       :title, :description, :rating,
       :released_on, :total_gross, :diretor,
       :duration, :image_file_name
