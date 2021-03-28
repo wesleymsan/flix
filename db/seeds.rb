@@ -173,8 +173,7 @@ Movie.create!([
     duration: "141 min",
     image_file_name: "wonder-woman.png"
   }
-  ]),
-
+])
 Genre.create!([
   {
     name: "Action"
