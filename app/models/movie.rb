@@ -33,9 +33,9 @@ class Movie < ApplicationRecord
     (self.average_stars / 5.0) * 100
   end
 
-  def self.released
-    where('released_on < ?', Time.now).order(released_on: :desc)
-  end
+  scope :released, -> { where('released_on < ?', Time.now).order('released_on desc') }
+  scope :upcoming, -> { where('released_on > ?', Time.now).order('released_on asc')}
+  scope :recent,   -> (max=5) { released.limit(max) }
 
   def flop?
     total_gross.blank? || total_gross < 250_000_000

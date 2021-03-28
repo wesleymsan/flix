@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   get 'signin' => 'sessions#new'
   root 'movies#index'
+  get 'movies/filter/:filter' => 'movies#index', as: :filtered_movies
   resources :movies do
     resources :reviews
     resources :favorites, only: [:create, :destroy]
