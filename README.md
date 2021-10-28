@@ -1,26 +1,14 @@
-# README
+# Flix
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Flix is ​​an open application to consult and register movies.
+
+## What does it do?
+
+- Register a movie(if you are an admin)
+- Released movies
+- Upcoming movies
+- Rate movies
+- Write reviews
 
 ### To do:
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Search a movies(integrate with external API to query movies)
