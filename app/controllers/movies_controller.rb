@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     case params[:filter]
     when 'upcoming'
       @movies = Movie.upcoming
-    when 'rencent'
+    when 'recent'
       @movies = Movie.recent
     else
       @movies = Movie.released
@@ -26,6 +26,7 @@ class MoviesController < ApplicationController
   end
 
   def edit
+    # todo
   end
 
   def update
@@ -56,7 +57,7 @@ class MoviesController < ApplicationController
 
   private
 
-  def set_movie    
+  def set_movie
     @movie = Movie.find_by!(slug: params[:id])
   end
 
